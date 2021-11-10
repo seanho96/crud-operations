@@ -1,0 +1,19 @@
+<h1>Create a new article</h1>
+
+<%# Need to provide form with the scope of the Model and the URL to submit %>
+<%# local:true specifies that we want to send via HTTP POST and not remotely via AJAX %>
+<%# form_for comes with standard HTTP POST and won't need `local` %>
+<%= form_with scope: :article, url: articles_path, local: true do |form| %>
+  <p>
+    <%= form.label :title %><br />
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :description %><br />
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
