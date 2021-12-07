@@ -1,5 +1,9 @@
 @import "bootstrap/dist/css/bootstrap";
 
+#page-content {
+  min-height: calc(100vh - 136px);
+}
+
 .navbar {
   background-color: black !important;
 }
