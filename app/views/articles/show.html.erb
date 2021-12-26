@@ -1,12 +1,36 @@
 <% flash.each do |name, message| %>
-  <%= message %>
+  <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+    <div>
+      <%= message %>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 <% end %>
 
-<h1>Showing article details</h1>
+<h1 class="text-center">Showing article details</h1>
 
-<p><strong>Title: </strong><%= @article.title %></p>
-<p><strong>Description: </strong><%= @article.description %></p>
-
-<%= link_to "Edit", edit_article_path(@article.id) %> | 
-<%= link_to "Delete", article_path(@article.id), method: :delete, data: { confirm: "Are you sure?" } %> | 
-<%= link_to "Return to articles listing", articles_path %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-8 mt-4">
+      <div class="card text-center shadow mb-5 bg-white rounded">
+        <div class="card-header fst-italic">by Content Creator</div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= @article.title %>
+          </h5>
+          <p class="card-text">
+            <%= simple_format(@article.description) %>
+          </p>
+          <%= link_to 'Edit', edit_article_path(@article.id), class: "btn btn-outline-secondary" %>
+          <%= link_to 'Delete', article_path(@article.id), class: "btn btn-outline-danger",
+          method: :delete, data: { confirm: "Are you sure you want to delete this article?" } %>
+          <%= link_to 'Return to article listing', articles_path, class: "btn btn-outline-primary" %>
+        </div>
+        <div class="card-footer text-muted">
+          Created <%= time_ago_in_words(@article.created_at) %> ago,
+          edited <%= time_ago_in_words(@article.updated_at) %> ago
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
