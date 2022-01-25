@@ -1,5 +1,6 @@
 <% flash.each do |name, message| %>
-  <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+  <div class="alert alert-<%= name == "notice" ? "success" : "danger" %> d-flex align-items-center 
+  alert-dismissible fade show" role="alert">
     <div>
       <%= message %>
     </div>
