@@ -39,10 +39,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    session[:user_id] = nil
-    flash[:notice] = "User and all articles associated have been deleted"
-    redirect_to articles_path
+    if @user.destroy
+      session[:user_id] = nil
+      flash[:notice] = "User and all articles associated have been deleted"
+      redirect_to articles_path
+    else
+      render 'show'
+    end
   end
 
   private
