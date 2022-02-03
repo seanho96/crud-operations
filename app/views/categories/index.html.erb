@@ -14,6 +14,9 @@
               <%= link_to category.name, category_path(category), class:
               "text-success text-decoration-none" %>
             </h5>
+            <p class="card-text">
+              <%= pluralize(category.articles.count, "article") %>
+            </p>
           </div>
           <div class="card-footer text-muted">
             Created <%= time_ago_in_words(category.created_at) %> ago,
